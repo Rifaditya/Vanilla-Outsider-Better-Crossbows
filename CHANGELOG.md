@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.0+build.5] - 2026-05-08
+
+### Changed
+- Refactored `AnvilMenuMixin` and `CrossbowItemMixin` to delegate their logic to `DasikLibrary` for better code reuse ("Thin Mod, Fat Library" architecture).
+- Bumped DasikLibrary dependency to `v1.6.9+build.24`.
+
 ## [1.0.0+build.4] - 2026-05-08
 
 ### Fixed
