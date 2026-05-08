@@ -14,11 +14,17 @@ public class BetterCrossbowsGameRules {
             Identifier.fromNamespaceAndPath("bettercrossbows", "better_crossbows")
     );
 
+    public static GameRule<Integer> CROSSBOW_BALLISTICS_MAX_LEVEL;
     public static GameRule<Integer> CROSSBOW_VELOCITY_MULTIPLIER;
     public static GameRule<Integer> CROSSBOW_RELOAD_TICKS;
     public static GameRule<Boolean> CROSSBOW_ENABLE_JUICE;
 
     public static void register() {
+        CROSSBOW_BALLISTICS_MAX_LEVEL = DynamicGameRuleManager.integerRule("bettercrossbows:crossbow_ballistics_max_level", CATEGORY, 5)
+                .name("Crossbow Ballistics Max Level")
+                .description("Maximum obtainable level for the Ballistics enchantment. Default: 5")
+                .register();
+
         CROSSBOW_VELOCITY_MULTIPLIER = DynamicGameRuleManager.integerRule("bettercrossbows:crossbow_velocity_multiplier", CATEGORY, 150)
                 .name("Crossbow Velocity Multiplier")
                 .description("Multiplier applied to the base power of arrows (in percent). Default: 150 (1.5x)")
@@ -37,6 +43,10 @@ public class BetterCrossbowsGameRules {
 
     public static float getVelocityMultiplier(Level level) {
         return DynamicGameRuleManager.getInt(level, CROSSBOW_VELOCITY_MULTIPLIER) / 100.0f;
+    }
+
+    public static int getBallisticsMaxLevel(Level level) {
+        return DynamicGameRuleManager.getInt(level, CROSSBOW_BALLISTICS_MAX_LEVEL);
     }
 
     public static int getReloadTicks(Level level) {

@@ -28,9 +28,10 @@ Part of the **Vanilla Outsider Collection** — mods that refine the vanilla exp
 Projectiles fired from crossbows travel at **1.5x velocity** by default. This increases accuracy over long distances and naturally scales damage based on the arrow's velocity vector.
 
 ### 🎯 Ballistics Enchantment
-A new rare enchantment (Levels I-II) that further optimizes projectile flight. 
+A new rare enchantment (Levels I-V default) that further optimizes projectile flight. 
 - 💢 **Level I**: +25% Velocity
-- 💥 **Level II**: +50% Velocity
+- 💥 **Level V**: +125% Velocity
+- 🌌 **Level X+**: Configurable via GameRule!
 - *Conflict*: Incompatible with **Multishot**. Choose between area denial or precision impact.
 
 ### ⚙️ Variable Tension
@@ -48,6 +49,7 @@ No messy config files. Better Crossbows uses the **Native Minecraft Game Rules**
 - bettercrossbows:crossbow_velocity_multiplier (Default: 150%)
 - bettercrossbows:crossbow_reload_ticks (Default: 25)
 - bettercrossbows:crossbow_enable_juice (Default: true)
+- bettercrossbows:crossbow_ballistics_max_level (Default: 5)
 
 ---
 

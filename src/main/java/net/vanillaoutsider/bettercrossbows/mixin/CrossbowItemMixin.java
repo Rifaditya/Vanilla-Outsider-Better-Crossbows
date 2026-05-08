@@ -32,7 +32,7 @@ public class CrossbowItemMixin {
     }
 
     @ModifyVariable(method = "performShooting", at = @At("HEAD"), argsOnly = true, ordinal = 0)
-    private float bettercrossbows$modifyPower(float power, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float power_ignored, float uncertainty, LivingEntity targetOverride) {
+    private float bettercrossbows$modifyPower(float velocity, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, java.util.List<ItemStack> projectiles, float uncertainty, boolean isCrit, LivingEntity targetOverride) {
         float baseMultiplier = BetterCrossbowsGameRules.getVelocityMultiplier(level);
         
         int ballisticsLevel = 0;
@@ -44,11 +44,11 @@ public class CrossbowItemMixin {
             }
         }
 
-        return power * baseMultiplier * (1.0f + 0.25f * ballisticsLevel);
+        return velocity * baseMultiplier * (1.0f + 0.25f * ballisticsLevel);
     }
 
     @Inject(method = "performShooting", at = @At("HEAD"))
-    private void bettercrossbows$juiceEffect(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float power, float uncertainty, LivingEntity targetOverride, CallbackInfo ci) {
+    private void bettercrossbows$juiceEffect(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, java.util.List<ItemStack> projectiles, float velocity, float uncertainty, boolean isCrit, LivingEntity targetOverride, CallbackInfo ci) {
         if (!BetterCrossbowsGameRules.isJuiceEnabled(level)) return;
 
         // Recalculate to see if we breach the threshold (since power here is pre-modification)
@@ -67,16 +67,19 @@ public class CrossbowItemMixin {
             }
         }
         
-        float finalPower = power * baseMultiplier * (1.0f + 0.25f * ballisticsLevel);
+        float finalPower = velocity * baseMultiplier * (1.0f + 0.25f * ballisticsLevel);
         
-        if (finalPower > 4.0f && level instanceof ServerLevel serverLevel) {
-            // Sonic Crack (pitch 0.5f)
-            serverLevel.playSound(null, shooter.getX(), shooter.getY(), shooter.getZ(), SoundEvents.FIREWORK_ROCKET_BLAST_FAR, SoundSource.PLAYERS, 1.0f, 0.5f);
+        if (finalPower > velocity * 1.2f) {
+            // Sonic Crack (pitch 0.5f) - Play on both sides for zero latency
+            net.minecraft.world.entity.player.Player player = shooter instanceof net.minecraft.world.entity.player.Player p ? p : null;
+            level.playSound(player, shooter.getX(), shooter.getY(), shooter.getZ(), SoundEvents.FIREWORK_ROCKET_BLAST_FAR, SoundSource.PLAYERS, 1.0f, 0.5f);
             
-            // Cloud particles
-            serverLevel.sendParticles(ParticleTypes.CLOUD, 
-                shooter.getX(), shooter.getEyeY() - 0.15, shooter.getZ(), 
-                5, 0.1, 0.1, 0.1, 0.05);
+            if (level instanceof ServerLevel serverLevel) {
+                // Cloud particles - Sent by server to tracking clients
+                serverLevel.sendParticles(ParticleTypes.CLOUD, 
+                    shooter.getX(), shooter.getEyeY() - 0.15, shooter.getZ(), 
+                    5, 0.1, 0.1, 0.1, 0.05);
+            }
         }
     }
 }

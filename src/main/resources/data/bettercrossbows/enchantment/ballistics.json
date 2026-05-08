@@ -6,7 +6,7 @@
   "supported_items": "#minecraft:enchantable/crossbow",
   "primary_items": "#minecraft:enchantable/crossbow",
   "weight": 2,
-  "max_level": 2,
+  "max_level": 255,
   "min_cost": {
     "base": 15,
     "per_level_above_first": 9
