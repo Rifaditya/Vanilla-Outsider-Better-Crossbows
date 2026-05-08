@@ -17,7 +17,7 @@ public class AnvilMenuMixin {
 
     @org.spongepowered.asm.mixin.Shadow
     @org.spongepowered.asm.mixin.Final
-    protected net.minecraft.world.inventory.ContainerLevelAccess access;
+    protected net.minecraft.world.entity.player.Player player;
 
     @Inject(method = "createResult", at = @At("RETURN"))
     private void bettercrossbows$capBallisticsLevel(CallbackInfo ci) {
@@ -27,21 +27,17 @@ public class AnvilMenuMixin {
         if (result.isEmpty()) return;
 
         ItemEnchantments enchantments = result.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
-        boolean changed = false;
         ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(enchantments);
 
-        this.access.execute((level, blockPos) -> {
-            int maxLevel = BetterCrossbowsGameRules.getBallisticsMaxLevel(level);
+        int maxLevel = BetterCrossbowsGameRules.getBallisticsMaxLevel(this.player.level());
 
-            for (var entry : enchantments.entrySet()) {
-                if (entry.getKey().is(BetterCrossbowsEnchantments.BALLISTICS_ID)) {
-                    if (entry.getIntValue() > maxLevel) {
-                        mutable.set(entry.getKey(), maxLevel);
-                        // If it's 0 or less, maybe remove it, but maxLevel min is 1.
-                    }
+        for (var entry : enchantments.entrySet()) {
+            if (entry.getKey().is(BetterCrossbowsEnchantments.BALLISTICS_ID)) {
+                if (entry.getIntValue() > maxLevel) {
+                    mutable.set(entry.getKey(), maxLevel);
                 }
             }
-        });
+        }
 
         // Apply changes if we mutated it? Wait, how do we know we changed it?
         // Let's just compare the new enchantments to old.

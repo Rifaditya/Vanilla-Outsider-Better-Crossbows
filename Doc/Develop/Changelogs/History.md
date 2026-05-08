@@ -1,5 +1,10 @@
 # History
 
+## [1.0.0+build.4] - 2026-05-08
+### Fixed
+- Fixed critical Mixin crash by adding missing `refmap` to `bettercrossbows.mixins.json`.
+- Improved `AnvilMenuMixin` stability by switching from `access` field to `player` field shadow.
+
 ## [1.0.0+build.3] - 2026-05-08
 ### Added
 - Added `crossbow_ballistics_max_level` GameRule to dynamically configure the max level of the Ballistics enchantment (Default: 5).
