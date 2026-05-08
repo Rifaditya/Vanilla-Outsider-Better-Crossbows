@@ -29,18 +29,13 @@ public class AnvilMenuMixin {
         ItemEnchantments enchantments = result.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
         ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(enchantments);
 
-        int maxLevel = BetterCrossbowsGameRules.getBallisticsMaxLevel(this.player.level());
+        net.dasik.social.api.enchantment.DynamicEnchantmentManager.capEnchantmentLevel(
+            this.player.level(), 
+            mutable, 
+            BetterCrossbowsEnchantments.BALLISTICS_ID, 
+            BetterCrossbowsGameRules.CROSSBOW_BALLISTICS_MAX_LEVEL
+        );
 
-        for (var entry : enchantments.entrySet()) {
-            if (entry.getKey().is(BetterCrossbowsEnchantments.BALLISTICS_ID)) {
-                if (entry.getIntValue() > maxLevel) {
-                    mutable.set(entry.getKey(), maxLevel);
-                }
-            }
-        }
-
-        // Apply changes if we mutated it? Wait, how do we know we changed it?
-        // Let's just compare the new enchantments to old.
         ItemEnchantments newEnchantments = mutable.toImmutable();
         if (!newEnchantments.equals(enchantments)) {
             result.set(DataComponents.ENCHANTMENTS, newEnchantments);

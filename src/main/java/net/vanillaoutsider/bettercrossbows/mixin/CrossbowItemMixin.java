@@ -69,17 +69,6 @@ public class CrossbowItemMixin {
         
         float finalPower = velocity * baseMultiplier * (1.0f + 0.25f * ballisticsLevel);
         
-        if (finalPower > velocity * 1.2f) {
-            // Sonic Crack (pitch 0.5f) - Play on both sides for zero latency
-            net.minecraft.world.entity.player.Player player = shooter instanceof net.minecraft.world.entity.player.Player p ? p : null;
-            level.playSound(player, shooter.getX(), shooter.getY(), shooter.getZ(), SoundEvents.FIREWORK_ROCKET_BLAST_FAR, SoundSource.PLAYERS, 1.0f, 0.5f);
-            
-            if (level instanceof ServerLevel serverLevel) {
-                // Cloud particles - Sent by server to tracking clients
-                serverLevel.sendParticles(ParticleTypes.CLOUD, 
-                    shooter.getX(), shooter.getEyeY() - 0.15, shooter.getZ(), 
-                    5, 0.1, 0.1, 0.1, 0.05);
-            }
-        }
+        net.dasik.social.api.projectile.ProjectileEffectHelper.playSonicJuice(level, shooter, finalPower, velocity, 1.2f);
     }
 }
