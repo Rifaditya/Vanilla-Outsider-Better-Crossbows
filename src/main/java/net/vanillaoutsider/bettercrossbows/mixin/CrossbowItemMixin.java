@@ -1,12 +1,10 @@
 package net.vanillaoutsider.bettercrossbows.mixin;
 
-// Verified against: CrossbowItem.java (26.1.2 Release)
+// Verified against: CrossbowItem.java (26.1.2)
+// performShooting signature: (Level, LivingEntity, InteractionHand, ItemStack, float power, float uncertainty, LivingEntity targetOverride)
+// NOTE: List<ItemStack> projectiles parameter was REMOVED in 26.1.2. Do not use it.
 
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CrossbowItem;
@@ -21,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.jspecify.annotations.Nullable;
 
 @Mixin(CrossbowItem.class)
 public class CrossbowItemMixin {
@@ -31,10 +30,12 @@ public class CrossbowItemMixin {
         cir.setReturnValue(ticks);
     }
 
+    // 26.1.2: performShooting(Level, LivingEntity, InteractionHand, ItemStack, float, float, LivingEntity)
+    // List<ItemStack> projectiles was removed - power is now at index 0 (argsOnly=true)
     @ModifyVariable(method = "performShooting", at = @At("HEAD"), argsOnly = true, ordinal = 0)
-    private float bettercrossbows$modifyPower(float velocity, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, java.util.List<ItemStack> projectiles, float uncertainty, boolean isCrit, LivingEntity targetOverride) {
+    private float bettercrossbows$modifyPower(float velocity, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float uncertainty, @Nullable LivingEntity targetOverride) {
         float baseMultiplier = BetterCrossbowsGameRules.getVelocityMultiplier(level);
-        
+
         int ballisticsLevel = 0;
         ItemEnchantments enchantments = weapon.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
         for (var entry : enchantments.entrySet()) {
@@ -48,15 +49,9 @@ public class CrossbowItemMixin {
     }
 
     @Inject(method = "performShooting", at = @At("HEAD"))
-    private void bettercrossbows$juiceEffect(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, java.util.List<ItemStack> projectiles, float velocity, float uncertainty, boolean isCrit, LivingEntity targetOverride, CallbackInfo ci) {
+    private void bettercrossbows$juiceEffect(Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float velocity, float uncertainty, @Nullable LivingEntity targetOverride, CallbackInfo ci) {
         if (!BetterCrossbowsGameRules.isJuiceEnabled(level)) return;
 
-        // Recalculate to see if we breach the threshold (since power here is pre-modification)
-        // Wait, @ModifyVariable runs before @Inject if we don't specify carefully, but we can just do the check by calculating again, or modifying power inline.
-        // Actually, let's just do it in a unified @Inject instead of @ModifyVariable? No, we can't modify method args with @Inject.
-        // But @ModifyVariable changes the value for subsequent @Injects! So `power` here might already be modified.
-        // Let's assume it's modified if we put the ModifyVariable above. Wait, order of Mixin execution can be tricky.
-        // Let's just calculate it again for safety.
         float baseMultiplier = BetterCrossbowsGameRules.getVelocityMultiplier(level);
         int ballisticsLevel = 0;
         ItemEnchantments enchantments = weapon.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
@@ -66,9 +61,9 @@ public class CrossbowItemMixin {
                 break;
             }
         }
-        
+
         float finalPower = velocity * baseMultiplier * (1.0f + 0.25f * ballisticsLevel);
-        
+
         net.dasik.social.api.projectile.ProjectileEffectHelper.playSonicJuice(level, shooter, finalPower, velocity, 1.2f);
     }
 }

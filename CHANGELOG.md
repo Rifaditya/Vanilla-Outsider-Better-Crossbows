@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0+build.6] - 2026-05-10
+
+### Fixed
+- **AnvilMenuMixin crash**: Replaced invalid `@Shadow` on inherited `player` field (declared in `ItemCombinerMenu`) with an `@Accessor` interface (`ItemCombinerMenuAccessor`). `@Shadow` cannot target fields from parent classes.
+- **CrossbowItemMixin crash**: Updated `@ModifyVariable` and `@Inject` handlers for `performShooting` to match the 26.1.2 signature. The `List<ItemStack> projectiles` parameter was removed from `performShooting`; projectiles are now read internally from `DataComponents.CHARGED_PROJECTILES`.
+
+
 ## [1.0.0+build.5] - 2026-05-08
 
 ### Changed
