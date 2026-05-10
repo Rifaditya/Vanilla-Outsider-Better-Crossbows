@@ -1,6 +1,10 @@
 # Changelog
 
-## [1.0.0+build.6] - 2026-05-10
+## [1.0.0+build.7] - 2026-05-10
+
+### Fixed
+- **CrossbowItemMixin `@ModifyVariable` signature**: Handler now correctly declares all method parameters as context (`float power, float uncertainty`) matching the `performShooting(Level, LivingEntity, InteractionHand, ItemStack, float, float, LivingEntity)` signature in 26.1.2.
+
 
 ### Fixed
 - **AnvilMenuMixin crash**: Replaced invalid `@Shadow` on inherited `player` field (declared in `ItemCombinerMenu`) with an `@Accessor` interface (`ItemCombinerMenuAccessor`). `@Shadow` cannot target fields from parent classes.

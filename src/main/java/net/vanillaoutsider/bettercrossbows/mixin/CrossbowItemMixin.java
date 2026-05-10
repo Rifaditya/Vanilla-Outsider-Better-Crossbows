@@ -30,10 +30,11 @@ public class CrossbowItemMixin {
         cir.setReturnValue(ticks);
     }
 
-    // 26.1.2: performShooting(Level, LivingEntity, InteractionHand, ItemStack, float, float, LivingEntity)
-    // List<ItemStack> projectiles was removed - power is now at index 0 (argsOnly=true)
+    // @ModifyVariable rule: first param = captured var, remaining = ALL method params as context.
+    // performShooting has (Level, LivingEntity, InteractionHand, ItemStack, float power, float uncertainty, LivingEntity)
+    // Handler must list: float captured, Level, LivingEntity, InteractionHand, ItemStack, float power, float uncertainty, LivingEntity
     @ModifyVariable(method = "performShooting", at = @At("HEAD"), argsOnly = true, ordinal = 0)
-    private float bettercrossbows$modifyPower(float velocity, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float uncertainty, @Nullable LivingEntity targetOverride) {
+    private float bettercrossbows$modifyPower(float velocity, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float power, float uncertainty, @Nullable LivingEntity targetOverride) {
         float baseMultiplier = BetterCrossbowsGameRules.getVelocityMultiplier(level);
 
         int ballisticsLevel = 0;
