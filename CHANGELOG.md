@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.0+build.9] - 2026-05-10
+
+### Fixed
+- **Creative tab Ballistics cap (parent tab)**: Also hooked `generateEnchantmentBookTypesOnlyMaxLevel` which controls the single max-level book shown in the Ingredients tab. Previous build.8 only hooked the search tab variant, leaving the parent tab still showing level 255.
+- **Shooting crash**: `NoClassDefFoundError: ProjectileEffectHelper` — requires DasikLibrary `1.6.9+build.24+`. Update the library jar in your mods folder.
+
 ## [1.0.0+build.8] - 2026-05-10
 
 ### Added
