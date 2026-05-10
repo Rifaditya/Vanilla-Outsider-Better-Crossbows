@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0+build.8] - 2026-05-10
+
+### Added
+- **Creative tab Ballistics cap** (`CreativeModeTabsMixin`): Enchanted books in the creative/search tab now only show up to the `crossbow_ballistics_max_level` GameRule value (default 5). Commands (`/enchant`, `/give`) are unaffected and can still exceed the cap freely, consistent with vanilla enchantment behavior.
+
 ## [1.0.0+build.7] - 2026-05-10
 
 ### Fixed

@@ -6,7 +6,8 @@
     "mixins": [
         "CrossbowItemMixin",
         "AnvilMenuMixin",
-        "ItemCombinerMenuAccessor"
+        "ItemCombinerMenuAccessor",
+        "CreativeModeTabsMixin"
     ],
     "injectors": {
         "defaultRequire": 1
