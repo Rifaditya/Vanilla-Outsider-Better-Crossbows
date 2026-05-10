@@ -24,10 +24,12 @@ import org.jspecify.annotations.Nullable;
 @Mixin(CrossbowItem.class)
 public class CrossbowItemMixin {
 
-    @Inject(method = "getChargeDuration", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getChargeDuration", at = @At("RETURN"), cancellable = true)
     private static void bettercrossbows$modifyChargeDuration(ItemStack crossbow, LivingEntity user, CallbackInfoReturnable<Integer> cir) {
-        int ticks = BetterCrossbowsGameRules.getReloadTicks(user.level());
-        cir.setReturnValue(ticks);
+        int vanillaTicks = cir.getReturnValue();
+        int baseTicks = BetterCrossbowsGameRules.getReloadTicks(user.level());
+        int quickChargeReduction = 25 - vanillaTicks; // Vanilla base is 25
+        cir.setReturnValue(Math.max(1, baseTicks - quickChargeReduction));
     }
 
     // @ModifyVariable rule: first param = captured var, remaining = ALL method params as context.

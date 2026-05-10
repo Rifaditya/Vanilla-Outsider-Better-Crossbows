@@ -27,28 +27,43 @@ import java.util.stream.IntStream;
 @Mixin(CreativeModeTabs.class)
 public class CreativeModeTabsMixin {
 
+    @org.spongepowered.asm.mixin.Shadow
+    private static net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters CACHED_PARAMETERS;
+
+    private static int bettercrossbows$lastKnownCap = -2;
+
+    /**
+     * Intercepts creative tab rebuild checks. If the GameRule has changed since last check,
+     * forces a rebuild by clearing the CACHED_PARAMETERS.
+     */
+    @Inject(method = "tryRebuildTabContents", at = @At("HEAD"))
+    private static void bettercrossbows$forceRebuildOnGameRuleChange(net.minecraft.world.flag.FeatureFlagSet enabledFeatures, boolean hasPermissions, HolderLookup.Provider lookup, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<Boolean> cir) {
+        int currentCap = bettercrossbows$getBallisticsCap();
+        if (bettercrossbows$lastKnownCap != -2 && currentCap != bettercrossbows$lastKnownCap) {
+            CACHED_PARAMETERS = null;
+        }
+        bettercrossbows$lastKnownCap = currentCap;
+    }
+
+
     /**
      * Resolves the current Ballistics display cap from the live GameRule,
      * falling back to the default (5) if no world is loaded or not on a client.
      */
     private static int bettercrossbows$getBallisticsCap() {
-        int cap = 5; // GameRule default
         if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
             try {
                 net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
-                if (mc != null && mc.level != null) {
-                    cap = BetterCrossbowsGameRules.getBallisticsMaxLevel(mc.level);
+                if (mc != null && mc.getSingleplayerServer() != null) {
+                    return BetterCrossbowsGameRules.getBallisticsMaxLevel(mc.getSingleplayerServer().overworld());
                 }
-            } catch (Exception ignored) {
-                // Graceful fallback
-            }
+            } catch (Exception ignored) {}
         }
-        return cap;
+        return -1; // -1 means unknown (multiplayer client), fallback to default data max level
     }
 
     /**
      * Hooks the PARENT TAB single-book generation.
-     * Vanilla shows one book at enchantment.getMaxLevel() — we clamp Ballistics to the GameRule cap.
      */
     @Inject(method = "generateEnchantmentBookTypesOnlyMaxLevel", at = @At("HEAD"), cancellable = true)
     private static void bettercrossbows$capBallisticsMaxLevelBook(
@@ -58,19 +73,21 @@ public class CreativeModeTabsMixin {
             CallbackInfo ci
     ) {
         final int cap = bettercrossbows$getBallisticsCap();
-        enchantments.listElements().map(enchantment -> {
-            int level = enchantment.is(BetterCrossbowsEnchantments.BALLISTICS_ID)
-                    ? Math.min(enchantment.value().getMaxLevel(), cap)
-                    : enchantment.value().getMaxLevel();
-            return EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, level));
-        }).forEach(stack -> output.accept(stack, tabVisibility));
+        enchantments.listElements().forEach(enchantment -> {
+            if (enchantment.is(BetterCrossbowsEnchantments.BALLISTICS_ID)) {
+                int level = cap >= 0 ? Math.min(enchantment.value().getMaxLevel(), cap) : enchantment.value().getMaxLevel();
+                if (level > 0) {
+                    output.accept(EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, level)), tabVisibility);
+                }
+            } else {
+                output.accept(EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, enchantment.value().getMaxLevel())), tabVisibility);
+            }
+        });
         ci.cancel();
     }
 
     /**
      * Hooks the SEARCH TAB all-levels generation.
-     * Vanilla generates books from minLevel to maxLevel — we stop at the GameRule cap for Ballistics.
-     * Commands (/enchant, /give, etc.) are NOT affected — they bypass the creative tab entirely.
      */
     @Inject(method = "generateEnchantmentBookTypesAllLevels", at = @At("HEAD"), cancellable = true)
     private static void bettercrossbows$capBallisticsAllLevelBooks(
@@ -80,13 +97,18 @@ public class CreativeModeTabsMixin {
             CallbackInfo ci
     ) {
         final int cap = bettercrossbows$getBallisticsCap();
-        enchantments.listElements().flatMap(enchantment -> {
+        enchantments.listElements().forEach(enchantment -> {
             int maxLevel = enchantment.is(BetterCrossbowsEnchantments.BALLISTICS_ID)
-                    ? Math.min(enchantment.value().getMaxLevel(), cap)
+                    ? (cap >= 0 ? Math.min(enchantment.value().getMaxLevel(), cap) : enchantment.value().getMaxLevel())
                     : enchantment.value().getMaxLevel();
-            return IntStream.rangeClosed(enchantment.value().getMinLevel(), maxLevel)
-                    .mapToObj(level -> EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, level)));
-        }).forEach(stack -> output.accept(stack, tabVisibility));
+            
+            int minLevel = enchantment.value().getMinLevel();
+            for (int i = minLevel; i <= maxLevel; i++) {
+                if (i > 0) {
+                    output.accept(EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, i)), tabVisibility);
+                }
+            }
+        });
         ci.cancel();
     }
 }

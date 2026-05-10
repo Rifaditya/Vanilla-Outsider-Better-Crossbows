@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.0.0+build.12] - 2026-05-10
+
+### Added
+- **Instant Creative Menu Update**: The Creative Menu now instantly reflects dynamic changes to the `crossbow_ballistics_max_level` GameRule when opened, without requiring the player to rejoin or use `/reload`. This is achieved by tracking GameRule changes and forcefully clearing vanilla's `CACHED_PARAMETERS` for creative tabs when a change is detected.
+
+## [1.0.0+build.11] - 2026-05-10
+
+### Fixed
+- **Creative Menu Blank Enchanted Books**: Fixed an issue where enchanted books for Ballistics generated in the Creative Menu would appear blank ("Enchanted Book" without the "Ballistics V" lore). This occurred because `DynamicGameRuleManager` defaults to returning `0` when queried by a `ClientLevel` (multiplayer/UI), causing the book to generate with Level 0. The mixin now safely extracts the `ServerLevel` in singleplayer to fetch the live GameRule, and correctly falls back to the data-driven max level in multiplayer to prevent invalid Level 0 book generation.
+
+## [1.0.0+build.10] - 2026-05-10
+
+### Added
+- **Enchanting Table Cap** (`EnchantmentMenuMixin`): The Enchanting Table now dynamically respects the `crossbow_ballistics_max_level` GameRule when generating enchantments for crossbows or books.
+
+### Fixed
+- **Quick Charge Incompatibility**: `CrossbowItemMixin` no longer breaks the vanilla Quick Charge enchantment. It now calculates the exact tick reduction applied by Quick Charge and correctly subtracts it from the new configurable base reload duration.
+
+### Concept Coverage ⭐ NEW
+- Features implemented: 3/3 (100%)
+- Missing: None
+
 ## [1.0.0+build.9] - 2026-05-10
 
 ### Fixed
