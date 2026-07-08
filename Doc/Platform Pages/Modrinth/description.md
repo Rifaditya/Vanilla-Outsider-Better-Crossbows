@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
   <!-- TODO: Replace with Better Crossbows Banner -->
   <img src="https://raw.githubusercontent.com/Rifaditya/Vanilla-Outsider-Better-Crossbows/main/src/main/resources/assets/bettercrossbows/icon.png" alt="Better Crossbows Icon" width="200">
 </div>
@@ -44,6 +44,11 @@ High-velocity shots (velocity > 4.0) trigger a satisfying **Sonic Crack** and vi
 
 ## ⚙️ Configuration (Native Game Rules)
 
+
+> [!IMPORTANT]
+> **Config vs. In-Game GameRules:**
+> The global configuration file only defines **default values for new worlds** at creation time.
+> If you have **already created/opened a world**, changing the config file will have no effect. You must change the settings in-game using the **Edit Game Rules** UI screen or the /gamerule command.
 No messy config files. Better Crossbows uses the **Native Minecraft Game Rules** system. Parameters are grouped into a dedicated **"Better Crossbows"** category in the official UI.
 
 - bettercrossbows:crossbow_velocity_multiplier (Default: 150%)
@@ -59,6 +64,10 @@ If you enjoy the **Vanilla Outsider** collection, consider fueling the next upda
 
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20Me-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/dasikigaijin/tip)
 [![SocioBuzz](https://img.shields.io/badge/SocioBuzz-Local_Support-7BB32E?style=for-the-badge)](https://sociabuzz.com/dasikigaijin/tribe)
+[![Saweria](https://img.shields.io/badge/Saweria-Local_Support-FFA500?style=for-the-badge)](https://saweria.co/DasikIgaijinn)
+
+> [!NOTE]
+> **Indonesian Users:** SocioBuzz and Saweria support local payment methods (Gopay, OVO, Dana, etc.) if you want to support me without using PayPal/Ko-fi!
 
 ---
 
