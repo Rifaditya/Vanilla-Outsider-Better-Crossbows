@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.0.7-26.1] - 2026-06-14
+
+### Added
+- **Separate Firework Velocity Scaling**: Introduced a separate velocity multiplier GameRule and Config option specifically for Firework Rockets (`bettercrossbows:crossbow_firework_multiplier`), allowing arrows and fireworks to be scaled independently.
+
+## [1.0.6-26.1] - 2026-06-14
+
+### Fixed
+- **Flattened Trajectory (Arc Fix)**: Implemented `AbstractArrowMixin` to dynamically scale down gravity for arrows fired from crossbows, aligning the vertical drop shape (arc) with their increased velocity, resulting in a flatter precision sniper trajectory.
+
+## [1.0.5-26.1] - 2026-06-14
+
+### Changed
+- **Dynamic Sonic Juice Scaling**: Firing high-velocity crossbow projectiles now dynamically scales the sonic boom crack sound pitch, cloud particle count, and cloud particle speed based on the arrow's final power. Firing at extreme velocities (velocity ratio > 2.0x) spawns extra gust particles.
+
+## [1.0.4-26.1] - 2026-06-14
+
+### Added
+- **Optional Client-Side GUI**: Implemented optional client-side configuration GUI using Cloth Config and ModMenu integration.
+- **Dedicated Server Crash Protection**: Implemented the Screen Isolation Protocol to ensure all Cloth Config screen API calls are isolated in helper classes and lazily loaded, preventing ClassNotFoundExceptions on dedicated servers.
+
+## [1.0.3-26.1] - 2026-06-14
+
+### Added
+- **Config JSON File Integration**: Added support for global JSON configuration file (`config/bettercrossbows.json`).
+- **Dynamic GameRules Initialization**: GameRules are now initialized using defaults loaded from the persistent config JSON rather than hardcoded numbers.
+
+## [1.0.2-26.1] - 2026-06-14
+
+### Changed
+- **Mod Versioning Standard**: Aligned mod versioning scheme to `1.0.2-26.1` (SemVer with target Minecraft Drop 26.1).
+
+### Fixed
+- **Codebase Cleanup**: Removed unused/dead `BALLISTICS` static field and empty `register()` method in `BetterCrossbowsEnchantments.java`.
+
 ## [1.0.0+build.12] - 2026-05-10
 
 ### Added

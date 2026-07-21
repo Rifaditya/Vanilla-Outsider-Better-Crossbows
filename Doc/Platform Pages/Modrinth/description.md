@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
   <!-- TODO: Replace with Better Crossbows Banner -->
   <img src="https://raw.githubusercontent.com/Rifaditya/Vanilla-Outsider-Better-Crossbows/main/src/main/resources/assets/bettercrossbows/icon.png" alt="Better Crossbows Icon" width="200">
 </div>
@@ -10,39 +10,39 @@
     <img src="https://img.shields.io/badge/Minecraft-26.1+-brightgreen?style=for-the-badge" alt="Minecraft 26.1+">
 </p>
 
-# ⚒️ Better Crossbows
+# ?? Better Crossbows
 
-**No Backports:** This mod targets **Minecraft 26.1+**. Older versions are unsupported.
+**Active Version Policy:** I build **1 JAR for 1 Version**. I only update and maintain the latest active Minecraft version (e.g. when 26.3 is released, 26.2 is retired). No backports or legacy version maintenance. Please do not ask.
 
 > **Precision Ballistics. Heavy Impact. The Sovereign Sniper.**
 
 Better Crossbows transforms the crossbow into a true high-velocity projectile platform. By prioritizing kinetic energy and terminal velocity over raw damage numbers, it establishes a unique 'Sniper' identity for the weapon.
 
-Part of the **Vanilla Outsider Collection** — mods that refine the vanilla experience with modern standards.
+Part of the **Vanilla Outsider Collection** � mods that refine the vanilla experience with modern standards.
 
 ---
 
-## ✨ Features
+## ? Features
 
-### 🚀 Kinetic Acceleration
+### ?? Kinetic Acceleration
 Projectiles fired from crossbows travel at **1.5x velocity** by default. This increases accuracy over long distances and naturally scales damage based on the arrow's velocity vector.
 
-### 🎯 Ballistics Enchantment
+### ?? Ballistics Enchantment
 A new rare enchantment (Levels I-V default) that further optimizes projectile flight. 
-- 💢 **Level I**: +25% Velocity
-- 💥 **Level V**: +125% Velocity
-- 🌌 **Level X+**: Configurable via GameRule!
+- ?? **Level I**: +25% Velocity
+- ?? **Level V**: +125% Velocity
+- ?? **Level X+**: Configurable via GameRule!
 - *Conflict*: Incompatible with **Multishot**. Choose between area denial or precision impact.
 
-### ⚙️ Variable Tension
+### ?? Variable Tension
 Fully configurable reload speeds via GameRules. Compatible with Quick Charge.
 
-### 🔊 Sonic Juice
+### ?? Sonic Juice
 High-velocity shots (velocity > 4.0) trigger a satisfying **Sonic Crack** and visual cloud trail.
 
 ---
 
-## ⚙️ Configuration (Native Game Rules)
+## ?? Configuration (Native Game Rules)
 
 
 > [!IMPORTANT]
@@ -58,7 +58,7 @@ No messy config files. Better Crossbows uses the **Native Minecraft Game Rules**
 
 ---
 
-## ☕ Support
+## ? Support
 
 If you enjoy the **Vanilla Outsider** collection, consider fueling the next update!
 
@@ -71,7 +71,7 @@ If you enjoy the **Vanilla Outsider** collection, consider fueling the next upda
 
 ---
 
-## 📜 Credits
+## ?? Credits
 
 | Role | Author |
 | :--- | :--- |
@@ -83,7 +83,7 @@ If you enjoy the **Vanilla Outsider** collection, consider fueling the next upda
 
 <div align="center">
 
-**Made with ❤️ for the Minecraft community**
+**Made with ?? for the Minecraft community**
 
 *Part of the Vanilla Outsider Collection*
 
