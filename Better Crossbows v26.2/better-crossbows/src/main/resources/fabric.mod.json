@@ -1,0 +1,39 @@
+{
+    "schemaVersion": 1,
+    "id": "bettercrossbows",
+    "version": "${version}",
+    "name": "Better Crossbows",
+    "description": "Transform the crossbow into a Heavy-Impact Projectile Platform.",
+    "authors": [
+        "Dasik (Rifaditya)"
+    ],
+    "contact": {
+        "homepage": "https://github.com/Dasik/Vanilla-Outsider-Better-Crossbows",
+        "sources": "https://github.com/Dasik/Vanilla-Outsider-Better-Crossbows"
+    },
+    "license": "GPL-3.0-or-later",
+    "icon": "assets/bettercrossbows/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "net.vanillaoutsider.bettercrossbows.BetterCrossbows"
+        ],
+        "modmenu": [
+            "net.vanillaoutsider.bettercrossbows.config.ModMenuIntegration"
+        ]
+    },
+    "mixins": [
+        "bettercrossbows.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.16.9",
+        "minecraft": "*",
+        "java": ">=25",
+        "fabric-api": "*",
+        "dasik-library": "*"
+    },
+    "suggests": {
+        "cloth-config": "*",
+        "modmenu": "*"
+    }
+}

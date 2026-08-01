@@ -1,0 +1,70 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version '1.15-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    mavenLocal()
+    maven { url = "https://maven.fabricmc.net/" }
+    maven { url = "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.terraformersmc.com/releases/" }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    // mappings loom.officialMojangMappings() // Zenith: NOP in non-obfuscated environment
+
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    
+    // Standalone Library (No JiJ)
+    implementation "net.dasik.social:dasik-library:${project.dasik_library_version}"
+
+    // Config GUI (Optional dependencies)
+    compileOnly "me.shedaniel.cloth:cloth-config-fabric:26.1.154"
+    runtimeOnly "me.shedaniel.cloth:cloth-config-fabric:26.1.154"
+
+    compileOnly "com.terraformersmc:modmenu:18.0.0-beta.1"
+    runtimeOnly "com.terraformersmc:modmenu:18.0.0-beta.1"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "loader_version", project.fabric_loader_version
+    inputs.property "minecraft_version", project.minecraft_version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+               "loader_version": project.fabric_loader_version,
+               "minecraft_version": project.minecraft_version
+    }
+}
+
+loom {
+    mixin {
+        defaultRefmapName = "bettercrossbows-refmap.json"
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}

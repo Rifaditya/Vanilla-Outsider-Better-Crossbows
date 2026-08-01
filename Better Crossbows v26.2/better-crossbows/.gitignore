@@ -1,0 +1,10 @@
+.gradle
+build
+bin
+!gradle-wrapper.jar
+
+build/
+bin/
+Archive/
+Archive Jar of all versions/
+*.jar
