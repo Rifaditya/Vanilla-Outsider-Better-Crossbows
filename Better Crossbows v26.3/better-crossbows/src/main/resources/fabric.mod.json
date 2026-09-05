@@ -26,11 +26,11 @@
         "bettercrossbows.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.16.9",
-        "minecraft": "*",
+        "fabricloader": ">=0.19.3",
+        "minecraft": ">=26.3-",
         "java": ">=25",
         "fabric-api": "*",
-        "dasik-library": "*"
+        "dasik-library": ">=1.8.36"
     },
     "suggests": {
         "cloth-config": "*",
