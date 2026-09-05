@@ -5,6 +5,7 @@ Open this file in your editor and change `[ ]` to `[x]` when you publish a versi
 
 ## 🚀 Published & Backlog Queue
 
+- [ ] **`1.0.9+26.2`** (2026-09-05) - Clean up config warning description in localization.
 - [ ] **`1.0.8+26.2`** (2026-09-05) - Migrated configuration GUI from Cloth Config to YetAnotherConfigLib v3 (YACL). Injected top-pinned Ko-fi creator support button. Aligned toolchain to Minecraft 26.2 and DasikLibrary v1.8.38.
 - [x] **`1.0.0+build.2`** (2026-05-08) - - Fixed Modrinth accessibility rejection by removing hidden `\x08` (backspace) control characters from Modrinth and CurseForge description pages, and README.md. - - Fixed critical game crash (`Unbound tags in registry`) by defining the missing `minecraft:exclusive_set/multishot` enchantment tag.
 - [x] **`1.0.0+build.3`** (2026-05-08) - - Added `crossbow_ballistics_max_level` GameRule to dynamically configure the max level of the Ballistics enchantment (Default: 5). - - Ballistics enchantment now scales up to Level 255 in data, with survival combinations capped by the GameRule via Mixin.

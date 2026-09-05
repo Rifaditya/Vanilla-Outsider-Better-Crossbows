@@ -14,7 +14,7 @@
   "gamerule.bettercrossbows.crossbow_enable_juice.description": "When true, high-velocity shots produce particles and sonic crack sounds.",
   "config.bettercrossbows.title": "Better Crossbows Config",
   "config.bettercrossbows.category.general": "General Settings",
-  "config.bettercrossbows.warning": "WARNING: Changes made here only affect the baseline defaults for NEW worlds. To configure your active/existing world, use the in-game /gamerule screen or command instead.",
+  "config.bettercrossbows.warning": "Configure global default settings. Active worlds can be adjusted in-game via Game Rules.",
   "config.bettercrossbows.crossbowBallisticsMaxLevel": "Ballistics Max Level",
   "config.bettercrossbows.crossbowBallisticsMaxLevel.description": "Maximum obtainable level for the Ballistics enchantment.",
   "config.bettercrossbows.crossbowVelocityMultiplier": "Crossbow Velocity Multiplier",
