@@ -91,10 +91,10 @@ afterEvaluate {
                     }
 
                     // Modrinth Profile Sync
-                    def profileDir = file("C:/Users/fmrif/AppData/Roaming/ModrinthApp/profiles/Fabric 26.2 (1)/mods")
+                    def profileDir = file("C:/Users/fmrif/AppData/Roaming/ModrinthApp/profiles/Fabric 26.3ish/mods")
                     if (profileDir.exists()) {
                         profileDir.listFiles().each { file ->
-                            if (file.name.startsWith(project.archives_base_name) && (file.name.endsWith(".jar") || file.name.endsWith(".jar.disabled")) && !file.name.equals(jarFile.name)) {
+                            if (file.name.startsWith(project.archives_base_name) && file.name.endsWith(".jar") && !file.name.equals(jarFile.name)) {
                                 file.delete()
                                 println "[MODRINTH-SYNC] Purged old version from launcher profile: ${file.name}"
                             }

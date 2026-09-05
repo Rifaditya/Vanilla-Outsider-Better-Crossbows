@@ -7,3 +7,7 @@ run/
 Archive Jar of all versions/
 Archive/
 Doc/Marketing/
+
+# Platform Publisher API Token Security Vault
+*platform_tokens.json
+.agents/config/platform_tokens.json

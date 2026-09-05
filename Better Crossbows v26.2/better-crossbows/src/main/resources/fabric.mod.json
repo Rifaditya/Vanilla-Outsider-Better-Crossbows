@@ -7,9 +7,22 @@
     "authors": [
         "Dasik (Rifaditya)"
     ],
+    "custom": {
+        "modrinth": {
+            "projectId": "better-crossbows",
+            "slug": "better-crossbows"
+        },
+        "modmenu": {
+            "links": {
+                "modmenu.donate": "https://ko-fi.com/dasikigaijin",
+                "modmenu.kofi": "https://ko-fi.com/dasikigaijin"
+            }
+        }
+    },
     "contact": {
-        "homepage": "https://github.com/Dasik/Vanilla-Outsider-Better-Crossbows",
-        "sources": "https://github.com/Dasik/Vanilla-Outsider-Better-Crossbows"
+        "homepage": "https://modrinth.com/mod/better-crossbows",
+        "sources": "https://github.com/Rifaditya/Vanilla-Outsider-Better-Crossbows",
+        "issues": "https://github.com/Rifaditya/Vanilla-Outsider-Better-Crossbows/issues"
     },
     "license": "GPL-3.0-or-later",
     "icon": "assets/bettercrossbows/icon.png",
@@ -26,22 +39,16 @@
         "bettercrossbows.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.16.9",
-        "minecraft": "*",
+        "fabricloader": ">=0.19.3",
+        "minecraft": ">=26.2-",
         "java": ">=25",
         "fabric-api": "*",
-        "dasik-library": "*"
+        "dasik-library": ">=1.8.38"
     },
     "suggests": {
+        "yet-another-config-lib": "*",
+        "yet_another_config_lib_v3": "*",
         "cloth-config": "*",
         "modmenu": "*"
-    },
-    "custom": {
-        "modmenu": {
-            "links": {
-                "modmenu.donate": "https://ko-fi.com/dasikigaijin",
-                "modmenu.kofi": "https://ko-fi.com/dasikigaijin"
-            }
-        }
     }
 }
