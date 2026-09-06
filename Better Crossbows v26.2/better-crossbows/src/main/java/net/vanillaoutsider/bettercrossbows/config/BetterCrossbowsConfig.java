@@ -1,3 +1,4 @@
+// Copyright (C) 2026 Dasik (Rifaditya) | GNU GPLv3
 package net.vanillaoutsider.bettercrossbows.config;
 
 import java.nio.file.Path;
@@ -18,6 +19,10 @@ public class BetterCrossbowsConfig {
     public int crossbowReloadTicks = 25;
     public boolean crossbowEnableJuice = true;
 
+    public void validate() {
+        // Full integer space unlocked per Player Agency & Anti-Nanny Invariant
+    }
+
     public static synchronized void load(Path configDir) {
         CONFIG_PATH = configDir.resolve("bettercrossbows.json");
         INSTANCE = net.dasik.social.api.config.ConfigHelper.load(
@@ -25,6 +30,7 @@ public class BetterCrossbowsConfig {
             config -> config.configVersion, (config, ver) -> config.configVersion = ver,
             "/bettercrossbows.json", LOGGER
         );
+        INSTANCE.validate();
     }
 
     public static synchronized void save() {

@@ -1,3 +1,4 @@
+// Copyright (C) 2026 Dasik (Rifaditya) | GNU GPLv3
 package net.vanillaoutsider.bettercrossbows.registry;
 
 // Verified against: Enchantment.java (26.1.2 Release)

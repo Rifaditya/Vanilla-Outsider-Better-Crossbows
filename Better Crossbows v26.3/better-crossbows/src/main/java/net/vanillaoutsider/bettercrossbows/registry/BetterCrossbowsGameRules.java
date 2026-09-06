@@ -1,3 +1,4 @@
+// Copyright (C) 2026 Dasik (Rifaditya) | GNU GPLv3
 package net.vanillaoutsider.bettercrossbows.registry;
 
 // Verified against: GameRules.java (Snapshot 10 / 26.1.2)
@@ -27,21 +28,25 @@ public class BetterCrossbowsGameRules {
         CROSSBOW_BALLISTICS_MAX_LEVEL = DynamicGameRuleManager.integerRule("bettercrossbows:crossbow_ballistics_max_level", CATEGORY, config.crossbowBallisticsMaxLevel)
                 .name("Crossbow Ballistics Max Level")
                 .description("Maximum obtainable level for the Ballistics enchantment. Default: " + config.crossbowBallisticsMaxLevel)
+                .range(Integer.MIN_VALUE, Integer.MAX_VALUE)
                 .register();
 
         CROSSBOW_VELOCITY_MULTIPLIER = DynamicGameRuleManager.integerRule("bettercrossbows:crossbow_velocity_multiplier", CATEGORY, config.crossbowVelocityMultiplier)
                 .name("Crossbow Velocity Multiplier")
                 .description("Multiplier applied to the base power of arrows (in percent). Default: " + config.crossbowVelocityMultiplier + " (1.5x)")
+                .range(Integer.MIN_VALUE, Integer.MAX_VALUE)
                 .register();
 
         CROSSBOW_FIREWORK_MULTIPLIER = DynamicGameRuleManager.integerRule("bettercrossbows:crossbow_firework_multiplier", CATEGORY, config.crossbowFireworkMultiplier)
                 .name("Crossbow Firework Multiplier")
                 .description("Multiplier applied to the base power of firework rockets (in percent). Default: " + config.crossbowFireworkMultiplier + " (1.0x)")
+                .range(Integer.MIN_VALUE, Integer.MAX_VALUE)
                 .register();
 
         CROSSBOW_RELOAD_TICKS = DynamicGameRuleManager.integerRule("bettercrossbows:crossbow_reload_ticks", CATEGORY, config.crossbowReloadTicks)
                 .name("Crossbow Reload Ticks")
                 .description("Base duration in ticks to charge a crossbow. Default: " + config.crossbowReloadTicks)
+                .range(Integer.MIN_VALUE, Integer.MAX_VALUE)
                 .register();
 
         CROSSBOW_ENABLE_JUICE = DynamicGameRuleManager.booleanRule("bettercrossbows:crossbow_enable_juice", CATEGORY, config.crossbowEnableJuice)

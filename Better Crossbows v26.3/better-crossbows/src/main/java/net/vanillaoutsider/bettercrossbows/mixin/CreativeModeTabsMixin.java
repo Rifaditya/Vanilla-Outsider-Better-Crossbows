@@ -1,3 +1,4 @@
+// Copyright (C) 2026 Dasik (Rifaditya) | GNU GPLv3
 package net.vanillaoutsider.bettercrossbows.mixin;
 
 // Verified against: CreativeModeTabs.java (26.1.2)
@@ -16,13 +17,10 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.core.HolderLookup;
 import net.vanillaoutsider.bettercrossbows.registry.BetterCrossbowsEnchantments;
-import net.vanillaoutsider.bettercrossbows.registry.BetterCrossbowsGameRules;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.stream.IntStream;
 
 @Mixin(CreativeModeTabs.class)
 public class CreativeModeTabsMixin {
@@ -52,14 +50,9 @@ public class CreativeModeTabsMixin {
      */
     private static int bettercrossbows$getBallisticsCap() {
         if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-            try {
-                net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
-                if (mc != null && mc.getSingleplayerServer() != null) {
-                    return BetterCrossbowsGameRules.getBallisticsMaxLevel(mc.getSingleplayerServer().overworld());
-                }
-            } catch (Exception ignored) {}
+            return net.vanillaoutsider.bettercrossbows.client.BetterCrossbowsClientHelper.getBallisticsCapFromSingleplayer();
         }
-        return -1; // -1 means unknown (multiplayer client), fallback to default data max level
+        return -1;
     }
 
     /**

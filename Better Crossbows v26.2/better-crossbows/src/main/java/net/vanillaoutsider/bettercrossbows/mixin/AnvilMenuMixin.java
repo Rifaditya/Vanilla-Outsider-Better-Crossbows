@@ -1,3 +1,4 @@
+// Copyright (C) 2026 Dasik (Rifaditya) | GNU GPLv3
 package net.vanillaoutsider.bettercrossbows.mixin;
 
 // Verified against: AnvilMenu.java, ItemCombinerMenu.java (Minecraft 26.1.2)

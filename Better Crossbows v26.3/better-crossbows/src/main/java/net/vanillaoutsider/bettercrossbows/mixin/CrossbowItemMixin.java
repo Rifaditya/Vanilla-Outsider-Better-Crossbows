@@ -1,3 +1,4 @@
+// Copyright (C) 2026 Dasik (Rifaditya) | GNU GPLv3
 package net.vanillaoutsider.bettercrossbows.mixin;
 
 // Verified against: CrossbowItem.java (26.1.2)
@@ -13,10 +14,11 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.vanillaoutsider.bettercrossbows.registry.BetterCrossbowsEnchantments;
 import net.vanillaoutsider.bettercrossbows.registry.BetterCrossbowsGameRules;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.jspecify.annotations.Nullable;
@@ -52,13 +54,13 @@ public class CrossbowItemMixin {
         return baseMultiplier * (1.0f + 0.25f * ballisticsLevel);
     }
 
-    // @ModifyVariable rule: first param = captured var, remaining = ALL method params as context.
-    // performShooting has (Level, LivingEntity, InteractionHand, ItemStack, float power, float uncertainty, LivingEntity)
-    // Handler must list: float captured, Level, LivingEntity, InteractionHand, ItemStack, float power, float uncertainty, LivingEntity
-    @ModifyVariable(method = "performShooting", at = @At("HEAD"), argsOnly = true, ordinal = 0)
-    private float bettercrossbows$modifyPower(float velocity, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, float power, float uncertainty, @Nullable LivingEntity targetOverride) {
+    @WrapOperation(
+        method = "performShooting",
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/CrossbowItem;shootProjectile(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;FZFFZLnet/minecraft/world/entity/LivingEntity;)V")
+    )
+    private void bettercrossbows$wrapShootProjectile(CrossbowItem instance, Level level, LivingEntity shooter, InteractionHand hand, ItemStack weapon, ItemStack projectile, float soundPitch, boolean isCreative, float power, float uncertainty, float soundAngle, @Nullable LivingEntity targetOverride, Operation<Void> original) {
         float multiplier = bettercrossbows$getShotMultiplier(level, weapon);
-        return velocity * multiplier;
+        original.call(instance, level, shooter, hand, weapon, projectile, soundPitch, isCreative, power * multiplier, uncertainty, soundAngle, targetOverride);
     }
 
     @Inject(method = "performShooting", at = @At("HEAD"))
