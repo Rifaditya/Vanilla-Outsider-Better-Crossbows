@@ -18,25 +18,25 @@
 
 | 마인크래프트 버전 | 모드 릴리스 | 런타임 툴체인 | 상태 | 바로가기 포털 |
 | :--- | :--- | :--- | :---: | :--- |
-| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 최신 활성 | [[👉 MC 26.3 위키 열기|26.3-Home]] |
-| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 패리티 버전 | [[👉 MC 26.2 위키 열기|26.2-Home]] |
+| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 최신 활성 | [[👉 MC 26.3 위키 열기|ko_kr-26.3-Home]] |
+| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 패리티 버전 | [[👉 MC 26.2 위키 열기|ko_kr-26.2-Home]] |
 
 ---
 
 ## 🌟 핵심 메커니즘 개요
 
-- **[[중충격 탄도학|26.3-Heavy-Impact-Ballistics]]**:
+- **[[중충격 탄도학|ko_kr-26.3-Heavy-Impact-Ballistics]]**:
   - 기본 쇠뇌 화살 속도가 **1.5배** ($150\%$)로 비약적 증가.
   - 탄도 낙차 보정: 화살에 작용하는 중력이 발사 속도에 비례하여 반비례 감소 ($g_{\text{eff}} = g_0 / M$).
   - **탄도학 마법부여 (`bettercrossbows:ballistics`)**: 레벨당 +25% 속도 보너스 (V 레벨 시 최대 +125%); 다중 발사(Multishot)와 상호 배타적.
   - 초음속 발사 시 묵직한 소닉 붐 폭음 및 충격파 입자 효과.
-- **[[신속 장전 메커니즘|26.3-Quick-Draw-Mechanics]]**:
+- **[[신속 장전 메커니즘|ko_kr-26.3-Quick-Draw-Mechanics]]**:
   - 게임룰을 통한 장전 틱 조절 지원 및 빠른 장전(Quick Charge) 마법부여와 완벽 호환.
-- **[[설정 및 게임룰|26.3-Configuration-and-GameRules]]**:
+- **[[설정 및 게임룰|ko_kr-26.3-Configuration-and-GameRules]]**:
   - DasikLibrary 기반의 동적 게임룰 (`bettercrossbows:better_crossbows`).
   - 샌드박스 플레이어의 자율성을 존중하여 정수 범위 전면 개방 (`[Integer.MIN_VALUE, Integer.MAX_VALUE]`).
   - 클라이언트 전용 YACL v3 GUI 설정 지원.
-- **[[아키텍처 및 믹스인 분석|26.3-Architecture-and-Mixins]]**:
+- **[[아키텍처 및 믹스인 분석|ko_kr-26.3-Architecture-and-Mixins]]**:
   - `CrossbowItemMixin`, `AbstractArrowMixin` 등 모든 인젝션 포인트 상세 분석.
 
 ---

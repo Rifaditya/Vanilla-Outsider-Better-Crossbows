@@ -19,3 +19,7 @@ Doc/Marketing/
 # Logs
 logs/
 *.log
+
+desktop.ini
+*/desktop.ini
+**/desktop.ini

@@ -18,25 +18,25 @@ Wähle deine Minecraft-Zielversion für den Zugriff auf den isolierten Dokumenta
 
 | Minecraft-Version | Mod-Release | Laufzeitumgebung | Status | Direktes Portal |
 | :--- | :--- | :--- | :---: | :--- |
-| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 Aktuell | [[👉 MC 26.3 Wiki öffnen|26.3-Home]] |
-| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 Parität | [[👉 MC 26.2 Wiki öffnen|26.2-Home]] |
+| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 Aktuell | [[👉 MC 26.3 Wiki öffnen|de_de-26.3-Home]] |
+| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 Parität | [[👉 MC 26.2 Wiki öffnen|de_de-26.2-Home]] |
 
 ---
 
 ## 🌟 Übersicht der Kernmechaniken
 
-- **[[Schwere Ballistik und Kinetik|26.3-Heavy-Impact-Ballistics]]**:
+- **[[Schwere Ballistik und Kinetik|de_de-26.3-Heavy-Impact-Ballistics]]**:
   - Armbrustpfeile fliegen standardmäßig mit **1.5-facher Geschwindigkeit** ($150\%$).
   - Dynamische Flugbahnglättung: Die Pfeilgravitation verringert sich proportional zur Geschwindigkeit ($g_{\text{eff}} = g_0 / M$).
   - **Ballistik-Verzauberung (`bettercrossbows:ballistics`)**: +25% Geschwindigkeit pro Stufe (bis zu +125% bei Stufe V); schließt Mehrfachschuss (Multishot) aus.
   - Akustischer Überschallknall und Partikelstoßwellen.
-- **[[Schnellspann-Mechanik|26.3-Quick-Draw-Mechanics]]**:
+- **[[Schnellspann-Mechanik|de_de-26.3-Quick-Draw-Mechanics]]**:
   - Konfigurierbare Nachlade-Ticks im Einklang mit der Vanilla-Verzauberung Schnellladen (Quick Charge).
-- **[[Konfiguration und GameRules|26.3-Configuration-and-GameRules]]**:
+- **[[Konfiguration und GameRules|de_de-26.3-Configuration-and-GameRules]]**:
   - Dynamische GameRules via DasikLibrary (`bettercrossbows:better_crossbows`).
   - Uneingeschränkter Wertebereich (`[Integer.MIN_VALUE, Integer.MAX_VALUE]`) für maximale Administratorfreiheit.
   - Optionale YACL v3 Client-GUI.
-- **[[Architektur und Mixins|26.3-Architecture-and-Mixins]]**:
+- **[[Architektur und Mixins|de_de-26.3-Architecture-and-Mixins]]**:
   - Technische Übersicht der Mixin-Injektionen (`CrossbowItemMixin`, `AbstractArrowMixin` usw.).
 
 ---

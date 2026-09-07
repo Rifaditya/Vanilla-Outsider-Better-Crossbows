@@ -20,8 +20,8 @@
 
 | 目标 Minecraft 版本 | 模组发行定位 | 运行时工具链 | 状态 | 文档传送入口 |
 | :--- | :--- | :--- | :---: | :--- |
-| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 当前主版本 | [[👉 进入 MC 26.3 维基|26.3-Home]] |
-| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 对齐版本 | [[👉 进入 MC 26.2 维基|26.2-Home]] |
+| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 当前主版本 | [[👉 进入 MC 26.3 维基|zh_cn-26.3-Home]] |
+| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 对齐版本 | [[👉 进入 MC 26.2 维基|zh_cn-26.2-Home]] |
 
 > [!NOTE]
 > 遵循模组的 **单版本单 Jar 策略 (1 Jar 1 Version Policy)**，每个版本分支均作为具有独立依赖项映射的完备制品进行构建。
@@ -30,18 +30,18 @@
 
 ## 🌟 核心子系统概览
 
-- **[[重型冲击弹道|26.3-Heavy-Impact-Ballistics]]**：
+- **[[重型冲击弹道|zh_cn-26.3-Heavy-Impact-Ballistics]]**：
   - 默认弩箭发射初速提升为 **1.5× 动能倍率** ($150\%$)。
   - 重力加速度伴随速度动态按比例缩减 ($g_{\text{eff}} = g_0 / M$)，带来平直的狙击弹道。
   - **弹道学附魔 (`bettercrossbows:ballistics`)**：每级提升 +25% 速度（V 级达到 +125%），与多重射击互斥。
   - 音效与粒子冲击波：超音速发射伴随深沉的破空爆破声与定向粒子冲击波。
-- **[[快速拉弦机制|26.3-Quick-Draw-Mechanics]]**：
+- **[[快速拉弦机制|zh_cn-26.3-Quick-Draw-Mechanics]]**：
   - 通过游戏规则自定义装填刻数，并完美兼容快速装填 (Quick Charge) 附魔。
-- **[[配置与游戏规则|26.3-Configuration-and-GameRules]]**：
+- **[[配置与游戏规则|zh_cn-26.3-Configuration-and-GameRules]]**：
   - 基于 DasikLibrary 动态注册的游戏规则 (`bettercrossbows:better_crossbows`)。
   - 彻底解锁全部整数空间 (`[Integer.MIN_VALUE, Integer.MAX_VALUE]`)，践行沙盒玩家自由与反保姆原则。
   - 选配 YACL v3 客户端 GUI，无服务端类加载隐患。
-- **[[架构与 Mixin 剖析|26.3-Architecture-and-Mixins]]**：
+- **[[架构与 Mixin 剖析|zh_cn-26.3-Architecture-and-Mixins]]**：
   - 深入剖析包含 `CrossbowItemMixin` 与 `AbstractArrowMixin` 在内的所有注入节点。
 
 ---

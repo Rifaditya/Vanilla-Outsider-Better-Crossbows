@@ -18,25 +18,25 @@ Selecione sua versão-alvo do Minecraft para acessar a documentação dedicada:
 
 | Versão do Minecraft | Lançamento do mod | Ambiente de execução | Status | Portal de acesso direto |
 | :--- | :--- | :--- | :---: | :--- |
-| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 Atual | [[👉 Entrar na Wiki do MC 26.3|26.3-Home]] |
-| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 Paridade | [[👉 Entrar na Wiki do MC 26.2|26.2-Home]] |
+| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 Atual | [[👉 Entrar na Wiki do MC 26.3|pt_br-26.3-Home]] |
+| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 Paridade | [[👉 Entrar na Wiki do MC 26.2|pt_br-26.2-Home]] |
 
 ---
 
 ## 🌟 Visão geral das mecânicas principais
 
-- **[[Balística de impacto pesado|26.3-Heavy-Impact-Ballistics]]**:
+- **[[Balística de impacto pesado|pt_br-26.3-Heavy-Impact-Ballistics]]**:
   - Velocidade inicial base aumentada em **1.5×** ($150\%$).
   - Correção dinâmica de arco: a gravidade da flecha diminui proporcionalmente à velocidade ($g_{\text{eff}} = g_0 / M$).
   - **Encantamento Balística (`bettercrossbows:ballistics`)**: concede +25% de velocidade por nível (até +125% no nível V); incompatível com Tiro Múltiplo.
   - Estrondo sônico sonoro e partículas de onda de choque.
-- **[[Mecânica de armação rápida|26.3-Quick-Draw-Mechanics]]**:
+- **[[Mecânica de armação rápida|pt_br-26.3-Quick-Draw-Mechanics]]**:
   - Duração de recarga configurável em ticks de servidor, totalmente compatível com Carga Rápida (Quick Charge).
-- **[[Configurações e GameRules|26.3-Configuration-and-GameRules]]**:
+- **[[Configurações e GameRules|pt_br-26.3-Configuration-and-GameRules]]**:
   - GameRules dinâmicas via DasikLibrary (`bettercrossbows:better_crossbows`).
   - Espaço de números inteiros totalmente destravado (`[Integer.MIN_VALUE, Integer.MAX_VALUE]`), respeitando a liberdade de sandbox.
   - Tela de configurações YACL v3 opcional no cliente.
-- **[[Arquitetura e Mixins|26.3-Architecture-and-Mixins]]**:
+- **[[Arquitetura e Mixins|pt_br-26.3-Architecture-and-Mixins]]**:
   - Detalhamento técnico de injeções em `CrossbowItemMixin`, `AbstractArrowMixin` e outros.
 
 ---

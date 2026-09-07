@@ -18,25 +18,25 @@ Sélectionnez votre version ciblée de Minecraft pour accéder à l'arborescence
 
 | Version Minecraft | Version du mod | Environnement | Statut | Accès direct |
 | :--- | :--- | :--- | :---: | :--- |
-| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 Actif actuel | [[👉 Ouvrir le Wiki MC 26.3|26.3-Home]] |
-| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 Parité | [[👉 Ouvrir le Wiki MC 26.2|26.2-Home]] |
+| **Minecraft 26.3** | `1.0.14+26.3` | Fabric Loader `>=0.19.3` / Java 25 | 🟢 Actif actuel | [[👉 Ouvrir le Wiki MC 26.3|fr_fr-26.3-Home]] |
+| **Minecraft 26.2** | `1.0.14+26.2` | Fabric Loader `>=0.19.3` / Java 25 | 🟡 Parité | [[👉 Ouvrir le Wiki MC 26.2|fr_fr-26.2-Home]] |
 
 ---
 
 ## 🌟 Aperçu des mécaniques clés
 
-- **[[Balistique d'impact lourd|26.3-Heavy-Impact-Ballistics]]** :
+- **[[Balistique d'impact lourd|fr_fr-26.3-Heavy-Impact-Ballistics]]** :
   - Vitesse initiale par défaut augmentée de **1.5×** ($150\%$).
   - Aplatissement dynamique de trajectoire : la gravité de la flèche diminue proportionnellement à la vitesse ($g_{\text{eff}} = g_0 / M$).
   - **Enchantement Balistique (`bettercrossbows:ballistics`)** : confère +25% de vélocité par niveau (jusqu'à +125% au niveau V) ; incompatible avec Tir multiple.
   - Détonation supersonique sonore et ondes de choc de particules.
-- **[[Mécanique de tension rapide|26.3-Quick-Draw-Mechanics]]** :
+- **[[Mécanique de tension rapide|fr_fr-26.3-Quick-Draw-Mechanics]]** :
   - Durée d'armement configurable en ticks serveur, entièrement compatible avec Charge rapide (Quick Charge).
-- **[[Configuration et GameRules|26.3-Configuration-and-GameRules]]** :
+- **[[Configuration et GameRules|fr_fr-26.3-Configuration-and-GameRules]]** :
   - GameRules dynamiques enregistrées avec DasikLibrary (`bettercrossbows:better_crossbows`).
   - Espace entier non bridé (`[Integer.MIN_VALUE, Integer.MAX_VALUE]`) respectant la liberté totale de jeu en mode bac à sable.
   - Interface graphique YACL v3 optionnelle côté client.
-- **[[Architecture et Mixins|26.3-Architecture-and-Mixins]]** :
+- **[[Architecture et Mixins|fr_fr-26.3-Architecture-and-Mixins]]** :
   - Décomposition technique des points d'injection dans `CrossbowItemMixin`, `AbstractArrowMixin`, etc.
 
 ---
