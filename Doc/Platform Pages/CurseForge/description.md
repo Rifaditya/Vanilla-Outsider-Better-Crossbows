@@ -1,62 +1,37 @@
-<div align="center">
-  <!-- TODO: Replace with Better Crossbows Banner -->
-  <img src="https://raw.githubusercontent.com/Rifaditya/Vanilla-Outsider-Better-Crossbows/main/src/main/resources/assets/bettercrossbows/icon.png" alt="Better Crossbows Icon" width="200">
-</div>
-
 <p align="center">
-    <a href="https://modrinth.com/mod/fabric-api"><img src="https://img.shields.io/badge/Requires-Fabric_API-blue?style=for-the-badge&logo=fabric" alt="Requires Fabric API"></a>
-    <a href="https://discord.gg/EV99bgAFqb" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Discord-Join_Community-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord"></a>
-    <img src="https://img.shields.io/badge/Language-Java-orange?style=for-the-badge&logo=java" alt="Java">
-    <img src="https://img.shields.io/badge/License-GPLv3-green?style=for-the-badge" alt="License">
-    <img src="https://img.shields.io/badge/Minecraft-26.1+-brightgreen?style=for-the-badge" alt="Minecraft 26.1+">
+  <a href="https://www.curseforge.com/minecraft/mc-mods/fabric-api"><img src="https://img.shields.io/badge/Requires-Fabric_API-blue?style=for-the-badge&amp;logo=fabric" alt="Requires Fabric API"></a>
+  <a href="https://www.curseforge.com/minecraft/mc-mods/dasik-libary"><img src="https://img.shields.io/badge/Requires-Dasik_Library-8A2BE2?style=for-the-badge" alt="Requires Dasik Library"></a>
+  <a href="https://discord.gg/EV99bgAFqb" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Discord-Join_Community-5865F2?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Join Discord"></a>
+  <img src="https://img.shields.io/badge/Language-Java_25-orange?style=for-the-badge&amp;logo=java" alt="Java 25">
+  <img src="https://img.shields.io/badge/License-GPLv3-green?style=for-the-badge" alt="License GPLv3">
+  <img src="https://img.shields.io/badge/Minecraft-26.2+-brightgreen?style=for-the-badge" alt="Minecraft 26.2+">
 </p>
 
-# ⚒️ Better Crossbows
+<h2>🏹 Vanilla Outsider: Better Crossbows</h2>
 
-**No Backports:** This mod targets **Minecraft 26.1+**. Older versions are unsupported.
+<blockquote><p><strong>&ldquo;Precision engineering for the discerning marksman.&rdquo;</strong></p></blockquote>
 
-> **Precision Ballistics. Heavy Impact. The Sovereign Sniper.**
+<blockquote><p><strong>1 Jar 1 Version Policy:</strong> I build <strong>1 dedicated JAR for each Minecraft version</strong> (e.g. MC 26.2, MC 26.3). Please download the exact build that matches your Minecraft installation.<br><br><strong>Dependency Requirement:</strong> Requires <strong>Fabric API</strong> and <strong>Dasik Library</strong>.</p></blockquote>
 
-Better Crossbows transforms the crossbow into a true high-velocity projectile platform. By prioritizing kinetic energy and terminal velocity over raw damage numbers, it establishes a unique 'Sniper' identity for the weapon.
+<p>Gives the crossbow the tactical identity it always deserved. Retain loaded ammunition across inventory moves, enjoy smoother draw ergonomics, and configure specialized projectile ballistics using native GameRules.</p>
 
-Part of the **Vanilla Outsider Collection** — mods that refine the vanilla experience with modern standards.
+<p>Part of the <strong>Vanilla Outsider Collection</strong> &mdash; mods that deepen vanilla immersion.</p>
 
----
+<hr>
 
-## ✨ Features
+<h2>🎯 Core Features</h2>
 
-### 🚀 Kinetic Acceleration
-Projectiles fired from crossbows travel at **1.5x velocity** by default. This increases accuracy over long distances and naturally scales damage based on the arrow's velocity vector.
+<h3>🏹 Tactical Ammunition Retention</h3>
+<p>Loaded crossbows retain their loaded state reliably when swapped, stored, or reorganized.</p>
 
-### 🎯 Ballistics Enchantment
-A new rare enchantment (Levels I-V default) that further optimizes projectile flight. 
-- 💢 **Level I**: +25% Velocity
-- 💥 **Level V**: +125% Velocity
-- 🌌 **Level X+**: Configurable via GameRule!
-- *Conflict*: Incompatible with **Multishot**. Choose between area denial or precision impact.
-
-### ⚙️ Variable Tension
-Fully configurable reload speeds via GameRules. Compatible with Quick Charge.
-
-### 🔊 Sonic Juice
-High-velocity shots (velocity > 4.0) trigger a satisfying **Sonic Crack** and visual cloud trail.
-
----
-
-## ⚙️ Configuration (Native Game Rules)
-
-No messy config files. Better Crossbows uses the **Native Minecraft Game Rules** system. Parameters are grouped into a dedicated **"Better Crossbows"** category in the official UI.
-
-- bettercrossbows:crossbow_velocity_multiplier (Default: 150%)
-- bettercrossbows:crossbow_reload_ticks (Default: 25)
-- bettercrossbows:crossbow_enable_juice (Default: true)
-- bettercrossbows:crossbow_ballistics_max_level (Default: 5)
+<h3>💥 Impact Feedback &amp; Sound Design</h3>
+<p>Crisp mechanical loading clicks and satisfying bolt impact feedback make ranged combat punchy and tactical.</p>
 
 <hr>
 
 <h2>☕ Support</h2>
 
-<p>If you enjoy <strong>Better Crossbows</strong> and the <strong>Vanilla Outsider Collection</strong>, consider fueling future updates!</p>
+<p>If you enjoy this mod and the collection, consider fueling future updates!</p>
 
 <p align="center">
   <a href="https://ko-fi.com/dasikigaijin/tip"><img src="https://img.shields.io/badge/Ko--fi-Support%20Me-FF5E5B?style=for-the-badge&amp;logo=ko-fi&amp;logoColor=white" alt="Ko-fi"></a>
@@ -98,7 +73,7 @@ No messy config files. Better Crossbows uses the **Native Minecraft Game Rules**
     </tr>
     <tr>
       <td><strong>Collection</strong></td>
-      <td><a href="https://www.curseforge.com/members/dasikigaijin/projects">Vanilla Outsider</a></td>
+      <td>Vanilla Outsider Collection</td>
     </tr>
     <tr>
       <td><strong>License</strong></td>
@@ -106,15 +81,15 @@ No messy config files. Better Crossbows uses the **Native Minecraft Game Rules**
     </tr>
     <tr>
       <td><strong>Source Code</strong></td>
-      <td><a href="https://github.com/Rifaditya/Vanilla-Outsider-Better-Crossbows">GitHub - Rifaditya/Vanilla-Outsider-Better-Crossbows</a></td>
+      <td><a href="https://github.com/Rifaditya/vo-better-crossbows">GitHub - Rifaditya/vo-better-crossbows</a></td>
     </tr>
     <tr>
       <td><strong>Issue Tracker</strong></td>
-      <td><a href="https://github.com/Rifaditya/Vanilla-Outsider-Better-Crossbows/issues">GitHub Issues</a></td>
+      <td><a href="https://github.com/Rifaditya/vo-better-crossbows/issues">GitHub Issues</a></td>
     </tr>
     <tr>
       <td><strong>Documentation / Wiki</strong></td>
-      <td><a href="https://github.com/Rifaditya/Vanilla-Outsider-Better-Crossbows/wiki">GitHub Wiki</a></td>
+      <td><a href="https://github.com/Rifaditya/vo-better-crossbows/wiki">GitHub Wiki</a></td>
     </tr>
   </tbody>
 </table>
