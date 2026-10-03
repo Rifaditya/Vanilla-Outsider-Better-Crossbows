@@ -1,0 +1,60 @@
+project:
+  name: "Better Crossbows"
+  version: "1.0.0"
+  author: "Dasik (Rifaditya)"
+  namespace: "bettercrossbows"
+
+philosophy:
+  primary: "Vanilla Outsider / Instant Gratification Hybrid"
+  goal: "Elevate crossbows to a precision sniper identity."
+
+features:
+  - id: "kinetic_acceleration"
+    name: "Kinetic Acceleration"
+    description: "Increases base crossbow velocity by 50%."
+    mechanic: "Velocity-to-Damage scaling"
+    juice:
+      enabled: true
+      sound: "minecraft:entity.firework_rocket.blast_far"
+      particles: ["cloud", "crit"]
+    implementation:
+      mixin: "CrossbowItem#shootProjectile"
+      parameter: "power"
+
+  - id: "ballistics_enchantment"
+    name: "Ballistics Enchantment"
+    description: "Unique high-rarity enchantment for additional velocity."
+    levels: 2
+    conflicts: ["minecraft:multishot"]
+    rarity: "RARE"
+
+  - id: "dynamic_reload"
+    name: "Dynamic Reload"
+    description: "Configurable base reload speed."
+    implementation:
+      mixin: "CrossbowItem#getChargeDuration"
+      default_ticks: 25
+
+configuration:
+  gamerules:
+    crossbowVelocityMultiplier:
+      type: "Double"
+      default: 1.5
+    crossbowBaseReloadTicks:
+      type: "Integer"
+      default: 25
+    crossbowEnableJuice:
+      type: "Boolean"
+      default: true
+    crossbowRequireEnchant:
+      type: "Boolean"
+      default: false
+
+qa:
+  debug_commands:
+    - "/gamerule crossbowVelocityMultiplier 2.0"
+    - "/enchant @s bettercrossbows:ballistics 2"
+  test_cases:
+    - "Precision at 100 blocks"
+    - "Velocity-based damage increase"
+    - "Enchantment mutual exclusivity"

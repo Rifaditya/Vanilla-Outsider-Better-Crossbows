@@ -1,0 +1,8 @@
+{
+  "configVersion": 1,
+  "crossbowBallisticsMaxLevel": 5,
+  "crossbowVelocityMultiplier": 150,
+  "crossbowFireworkMultiplier": 100,
+  "crossbowReloadTicks": 25,
+  "crossbowEnableJuice": true
+}
